@@ -2,6 +2,8 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'dart:convert';
+
 /// Provides API parity with the `Platform` class in `dart:io`, but using
 /// instance properties rather than static properties. This difference enables
 /// the use of these APIs in tests, where you can provide mock implementations.
@@ -108,4 +110,22 @@ abstract class Platform {
   /// version string of the current dart runtime, possibly followed by
   /// whitespace and other version and build details.
   String get version;
+
+  /// Returns a JSON-encoded representation of this platform.
+  String toJson() {
+    return const JsonEncoder.withIndent('  ').convert(<String, dynamic>{
+      'numberOfProcessors': numberOfProcessors,
+      'pathSeparator': pathSeparator,
+      'operatingSystem': operatingSystem,
+      'localHostname': localHostname,
+      'environment': environment,
+      'executable': executable,
+      'resolvedExecutable': resolvedExecutable,
+      'script': script.toString(),
+      'executableArguments': executableArguments,
+      'packageRoot': packageRoot,
+      'packageConfig': packageConfig,
+      'version': version,
+    });
+  }
 }

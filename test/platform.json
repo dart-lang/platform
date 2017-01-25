@@ -1,0 +1,19 @@
+{
+  "numberOfProcessors": 8,
+  "pathSeparator": "/",
+  "operatingSystem": "macos",
+  "localHostname": "platform.test.org",
+  "environment": {
+    "PATH": "/bin",
+    "PWD": "/platform"
+  },
+  "executable": "/bin/dart",
+  "resolvedExecutable": "/bin/dart",
+  "script": "file:///platform/test/fake_platform_test.dart",
+  "executableArguments": [
+    "--checked"
+  ],
+  "packageRoot": null,
+  "packageConfig": null,
+  "version": "1.22.0"
+}

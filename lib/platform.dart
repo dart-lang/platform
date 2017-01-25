@@ -4,3 +4,4 @@
 
 export 'src/interface/local_platform.dart';
 export 'src/interface/platform.dart';
+export 'src/testing/fake_platform.dart';
