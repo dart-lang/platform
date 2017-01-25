@@ -1,0 +1,12 @@
+name: platform
+version: 1.0.0
+authors:
+- Todd Volkert <tvolkert@google.com>
+description: A pluggable, mockable platform abstraction for Dart.
+homepage: https://github.com/tvolkert/platform
+
+dev_dependencies:
+  test: ^0.12.10
+
+environment:
+  sdk: '>=1.19.0 <2.0.0'

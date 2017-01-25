@@ -1,0 +1,16 @@
+### Dart template
+# Don’t commit the following directories created by pub.
+.buildlog
+.pub/
+build/
+packages
+.packages
+
+# Include when developing application packages.
+pubspec.lock
+
+# IDE
+.project
+.settings
+.idea
+.c9
