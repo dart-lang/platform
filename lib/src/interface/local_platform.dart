@@ -8,6 +8,9 @@ import 'platform.dart';
 
 /// `Platform` implementation that delegates directly to `dart:io`.
 class LocalPlatform extends Platform {
+  /// Creates a new [LocalPlatform].
+  const LocalPlatform();
+
   @override
   int get numberOfProcessors => io.Platform.numberOfProcessors;
 

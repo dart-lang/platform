@@ -8,6 +8,9 @@ import 'dart:convert';
 /// instance properties rather than static properties. This difference enables
 /// the use of these APIs in tests, where you can provide mock implementations.
 abstract class Platform {
+  /// Creates a new [Platform].
+  const Platform();
+
   /// The number of processors of the machine.
   int get numberOfProcessors;
 
