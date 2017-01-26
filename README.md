@@ -11,3 +11,7 @@ accessing platform-specific information.
 `package:platform` provides a lightweight wrapper around the static `Platform`
 properties that exist in `dart:io`. However, it uses instance properties rather
 than static properties, making it possible to mock out in tests.
+
+### Disclaimer
+
+This is not an official Google product.
