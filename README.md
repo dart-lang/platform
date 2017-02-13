@@ -1,7 +1,7 @@
 # Platform
 
-[![Build Status -](https://travis-ci.org/tvolkert/platform.svg?branch=master)](https://travis-ci.org/tvolkert/platform)
-[![Coverage Status -](https://coveralls.io/repos/github/tvolkert/platform/badge.svg?branch=master)](https://coveralls.io/github/tvolkert/platform?branch=master)
+[![Build Status -](https://travis-ci.org/google/platform.dart.svg?branch=master)](https://travis-ci.org/google/platform.dart)
+[![Coverage Status -](https://coveralls.io/repos/github/google/platform.dart/badge.svg?branch=master)](https://coveralls.io/github/google/platform.dart?branch=master)
 
 A generic platform abstraction for Dart.
 
@@ -11,7 +11,3 @@ accessing platform-specific information.
 `package:platform` provides a lightweight wrapper around the static `Platform`
 properties that exist in `dart:io`. However, it uses instance properties rather
 than static properties, making it possible to mock out in tests.
-
-### Disclaimer
-
-This is not an official Google product.
