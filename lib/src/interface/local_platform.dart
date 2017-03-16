@@ -46,4 +46,7 @@ class LocalPlatform extends Platform {
 
   @override
   String get version => io.Platform.version;
+
+  @override
+  bool get ansiSupported => io.Platform.ansiSupported;
 }

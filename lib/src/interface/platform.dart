@@ -114,6 +114,12 @@ abstract class Platform {
   /// whitespace and other version and build details.
   String get version;
 
+  /// When stdio is connected to a terminal, whether ANSI codes are supported.
+  ///
+  /// This value is hard-coded to true, except on Windows where only more recent
+  /// versions of Windows 10 support the codes.
+  bool get ansiSupported;
+
   /// Returns a JSON-encoded representation of this platform.
   String toJson() {
     return const JsonEncoder.withIndent('  ').convert(<String, dynamic>{
@@ -129,6 +135,7 @@ abstract class Platform {
       'packageRoot': packageRoot,
       'packageConfig': packageConfig,
       'version': version,
+      'ansiSupported': ansiSupported,
     });
   }
 }
