@@ -25,6 +25,7 @@ class FakePlatform extends Platform {
     this.packageRoot,
     this.packageConfig,
     this.version,
+    this.ansiSupported,
   });
 
   /// Creates a new [FakePlatform] with properties whose initial values mirror
@@ -41,7 +42,8 @@ class FakePlatform extends Platform {
         executableArguments = new List<String>.from(platform.executableArguments),
         packageRoot = platform.packageRoot,
         packageConfig = platform.packageConfig,
-        version = platform.version;
+        version = platform.version,
+        ansiSupported = platform.ansiSupported;
 
   /// Creates a new [FakePlatform] with properties extracted from the encoded
   /// JSON string.
@@ -63,6 +65,7 @@ class FakePlatform extends Platform {
       packageRoot : map['packageRoot'],
       packageConfig : map['packageConfig'],
       version : map['version'],
+      ansiSupported: map['ansiSupported'],
     );
   }
 
@@ -101,4 +104,7 @@ class FakePlatform extends Platform {
 
   @override
   String version;
+
+  @override
+  bool ansiSupported;
 }
