@@ -48,8 +48,8 @@ void main() {
         fake.environment[key] = 'FAKE';
         expect(fake.environment[key], 'FAKE');
 
-        expect(fake.executableArguments.length,
-            local.executableArguments.length);
+        expect(
+            fake.executableArguments.length, local.executableArguments.length);
         fake.executableArguments.add('ARG');
         expect(fake.executableArguments.last, 'ARG');
       });
@@ -69,7 +69,8 @@ void main() {
         });
         expect(fake.executable, '/bin/dart');
         expect(fake.resolvedExecutable, '/bin/dart');
-        expect(fake.script, new Uri.file('/platform/test/fake_platform_test.dart'));
+        expect(fake.script,
+            new Uri.file('/platform/test/fake_platform_test.dart'));
         expect(fake.executableArguments, <String>['--checked']);
         expect(fake.packageRoot, null);
         expect(fake.packageConfig, null);

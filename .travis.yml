@@ -1,0 +1,16 @@
+language: dart
+sudo: false
+dart:
+  - stable
+  - dev
+install:
+  - gem install coveralls-lcov
+before_script:
+  - ./dev/setup.sh
+script:
+  - ./dev/travis.sh
+after_success:
+  - (coveralls-lcov coverage/lcov.info)
+cache:
+  directories:
+    - $HOME/.pub-cache
