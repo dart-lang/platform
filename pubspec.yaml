@@ -9,4 +9,4 @@ dev_dependencies:
   test: ^0.12.10
 
 environment:
-  sdk: '>=1.23.0-dev.9.0 <2.0.0'
+  sdk: '>=1.23.0-dev.10.0 <2.0.0'
