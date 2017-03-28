@@ -2,6 +2,7 @@
 
 [![Build Status -](https://travis-ci.org/google/platform.dart.svg?branch=master)](https://travis-ci.org/google/platform.dart)
 [![Coverage Status -](https://coveralls.io/repos/github/google/platform.dart/badge.svg?branch=master)](https://coveralls.io/github/google/platform.dart?branch=master)
+[![Pub](https://img.shields.io/pub/v/platform.svg)](https://pub.dartlang.org/packages/platform)
 
 A generic platform abstraction for Dart.
 
