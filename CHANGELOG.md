@@ -1,3 +1,8 @@
+### 1.1.1
+
+* Updated `LocalPlatform` to use new `dart.io` API for ansi color support queries
+* Bumped minimum Dart SDK version to 1.23.0-dev.10.0
+
 ### 1.1.0
 
 * Added `ansiSupported`
