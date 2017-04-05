@@ -1,3 +1,7 @@
+### 2.0.0
+* Added `stdinSupportsAnsi` and `stdinSupportsAnsi`
+* Removed `ansiSupported`
+
 ### 1.1.1
 
 * Updated `LocalPlatform` to use new `dart.io` API for ansi color support queries
