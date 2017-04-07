@@ -1,3 +1,8 @@
+### 1.1.0-g3
+
+* Added `stdinSupportsAnsi` and `stdinSupportsAnsi`
+* Removed `ansiSupported`
+
 ### 1.1.0
 
 * Added `ansiSupported`

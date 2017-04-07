@@ -114,11 +114,11 @@ abstract class Platform {
   /// whitespace and other version and build details.
   String get version;
 
-  /// When stdio is connected to a terminal, whether ANSI codes are supported.
-  ///
-  /// This value is hard-coded to true, except on Windows where only more recent
-  /// versions of Windows 10 support the codes.
-  bool get ansiSupported;
+  /// When stdin is connected to a terminal, whether ANSI codes are supported.
+  bool get stdinSupportsAnsi;
+
+  /// When stdout is connected to a terminal, whether ANSI codes are supported.
+  bool get stdoutSupportsAnsi;
 
   /// Returns a JSON-encoded representation of this platform.
   String toJson() {
@@ -135,7 +135,8 @@ abstract class Platform {
       'packageRoot': packageRoot,
       'packageConfig': packageConfig,
       'version': version,
-      'ansiSupported': ansiSupported,
+      'stdinSupportsAnsi': stdinSupportsAnsi,
+      'stdoutSupportsAnsi': stdoutSupportsAnsi,
     });
   }
 }
