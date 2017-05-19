@@ -52,4 +52,7 @@ class LocalPlatform extends Platform {
 
   @override
   bool get stdoutSupportsAnsi => io.stdout.supportsAnsiEscapes;
+
+  @override
+  String get localeName => io.Platform.localeName;
 }

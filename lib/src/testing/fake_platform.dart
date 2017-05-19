@@ -27,6 +27,7 @@ class FakePlatform extends Platform {
     this.version,
     this.stdinSupportsAnsi,
     this.stdoutSupportsAnsi,
+    this.localeName,
   });
 
   /// Creates a new [FakePlatform] with properties whose initial values mirror
@@ -46,7 +47,8 @@ class FakePlatform extends Platform {
         packageConfig = platform.packageConfig,
         version = platform.version,
         stdinSupportsAnsi = platform.stdinSupportsAnsi,
-        stdoutSupportsAnsi = platform.stdoutSupportsAnsi;
+        stdoutSupportsAnsi = platform.stdoutSupportsAnsi,
+        localeName = platform.localeName;
 
   /// Creates a new [FakePlatform] with properties extracted from the encoded
   /// JSON string.
@@ -70,6 +72,7 @@ class FakePlatform extends Platform {
       version: map['version'],
       stdinSupportsAnsi: map['stdinSupportsAnsi'],
       stdoutSupportsAnsi: map['stdoutSupportsAnsi'],
+      localeName: map['localeName'],
     );
   }
 
@@ -114,4 +117,7 @@ class FakePlatform extends Platform {
 
   @override
   bool stdoutSupportsAnsi;
+
+  @override
+  String localeName;
 }
