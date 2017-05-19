@@ -120,6 +120,9 @@ abstract class Platform {
   /// When stdout is connected to a terminal, whether ANSI codes are supported.
   bool get stdoutSupportsAnsi;
 
+  /// Get the name of the current locale.
+  String get localeName;
+
   /// Returns a JSON-encoded representation of this platform.
   String toJson() {
     return const JsonEncoder.withIndent('  ').convert(<String, dynamic>{
@@ -137,6 +140,7 @@ abstract class Platform {
       'version': version,
       'stdinSupportsAnsi': stdinSupportsAnsi,
       'stdoutSupportsAnsi': stdoutSupportsAnsi,
+      'localeName': localeName,
     });
   }
 }

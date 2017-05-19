@@ -1,4 +1,10 @@
+### 2.1.0
+
+* Added `localeName`
+* Bumped minimum Dart SDK version to 1.24.0-dev.0.0
+
 ### 2.0.0
+
 * Added `stdinSupportsAnsi` and `stdinSupportsAnsi`
 * Removed `ansiSupported`
 

@@ -20,6 +20,7 @@ void _expectPlatformsEqual(Platform actual, Platform expected) {
   expect(actual.packageRoot, expected.packageRoot);
   expect(actual.packageConfig, expected.packageConfig);
   expect(actual.version, expected.version);
+  expect(actual.localeName, expected.localeName);
 }
 
 void main() {
@@ -75,6 +76,7 @@ void main() {
         expect(fake.packageRoot, null);
         expect(fake.packageConfig, null);
         expect(fake.version, '1.22.0');
+        expect(fake.localeName, 'de/de');
       });
 
       test('fromJsonToJson', () {
