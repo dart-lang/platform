@@ -1,3 +1,7 @@
+### 2.1.1
+
+* Bumped maximum Dart SDK version to 2.0.0-dev.infinity
+
 ### 2.1.0
 
 * Added `localeName`
