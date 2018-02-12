@@ -1,3 +1,7 @@
+### 2.1.2
+
+* Relax sdk upper bound constraint to  '<2.0.0' to allow 'edge' dart sdk use.
+
 ### 2.1.1
 
 * Bumped maximum Dart SDK version to 2.0.0-dev.infinity
