@@ -22,6 +22,9 @@ abstract class Platform {
   /// representing the operating system.
   String get operatingSystem;
 
+  /// A string representing the version of the operating system or platform.
+  String get operatingSystemVersion;
+
   /// Get the local hostname for the system.
   String get localHostname;
 
@@ -129,6 +132,7 @@ abstract class Platform {
       'numberOfProcessors': numberOfProcessors,
       'pathSeparator': pathSeparator,
       'operatingSystem': operatingSystem,
+      'operatingSystemVersion': operatingSystemVersion,
       'localHostname': localHostname,
       'environment': environment,
       'executable': executable,

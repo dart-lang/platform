@@ -16,6 +16,7 @@ class FakePlatform extends Platform {
     this.numberOfProcessors,
     this.pathSeparator,
     this.operatingSystem,
+    this.operatingSystemVersion,
     this.localHostname,
     this.environment,
     this.executable,
@@ -36,6 +37,7 @@ class FakePlatform extends Platform {
       : numberOfProcessors = platform.numberOfProcessors,
         pathSeparator = platform.pathSeparator,
         operatingSystem = platform.operatingSystem,
+        operatingSystemVersion = platform.operatingSystemVersion,
         localHostname = platform.localHostname,
         environment = new Map<String, String>.from(platform.environment),
         executable = platform.executable,
@@ -61,6 +63,7 @@ class FakePlatform extends Platform {
       numberOfProcessors: map['numberOfProcessors'],
       pathSeparator: map['pathSeparator'],
       operatingSystem: map['operatingSystem'],
+      operatingSystemVersion: map['operatingSystemVersion'],
       localHostname: map['localHostname'],
       environment: map['environment'].cast<String, String>(),
       executable: map['executable'],
@@ -84,6 +87,9 @@ class FakePlatform extends Platform {
 
   @override
   String operatingSystem;
+
+  @override
+  String operatingSystemVersion;
 
   @override
   String localHostname;
