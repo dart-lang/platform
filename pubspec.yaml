@@ -1,5 +1,5 @@
 name: platform
-version: 2.2.0
+version: 2.2.1
 authors:
 - Todd Volkert <tvolkert@google.com>
 description: A pluggable, mockable platform abstraction for Dart.

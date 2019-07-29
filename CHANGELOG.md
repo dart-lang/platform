@@ -1,3 +1,7 @@
+### 2.2.1
+
+* Add `operatingSystemVersion`
+
 ### 2.2.0
 
 * Declare compatibility with Dart 2 stable
