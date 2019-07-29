@@ -21,6 +21,9 @@ class LocalPlatform extends Platform {
   String get operatingSystem => io.Platform.operatingSystem;
 
   @override
+  String get operatingSystemVersion => io.Platform.operatingSystemVersion;
+
+  @override
   String get localHostname => io.Platform.localHostname;
 
   @override

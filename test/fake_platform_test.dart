@@ -11,6 +11,7 @@ void _expectPlatformsEqual(Platform actual, Platform expected) {
   expect(actual.numberOfProcessors, expected.numberOfProcessors);
   expect(actual.pathSeparator, expected.pathSeparator);
   expect(actual.operatingSystem, expected.operatingSystem);
+  expect(actual.operatingSystemVersion, expected.operatingSystemVersion);
   expect(actual.localHostname, expected.localHostname);
   expect(actual.environment, expected.environment);
   expect(actual.executable, expected.executable);
@@ -63,6 +64,7 @@ void main() {
         expect(fake.numberOfProcessors, 8);
         expect(fake.pathSeparator, '/');
         expect(fake.operatingSystem, 'macos');
+        expect(fake.operatingSystemVersion, '10.14.5');
         expect(fake.localHostname, 'platform.test.org');
         expect(fake.environment, <String, String>{
           'PATH': '/bin',
