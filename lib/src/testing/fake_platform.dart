@@ -2,6 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+// @dart=2.9
 import 'dart:convert';
 
 import '../interface/platform.dart';
@@ -13,22 +14,22 @@ class FakePlatform extends Platform {
   /// Unspecified properties will *not* be assigned default values (they will
   /// remain `null`).
   FakePlatform({
-    this.numberOfProcessors,
-    this.pathSeparator,
-    this.operatingSystem,
-    this.operatingSystemVersion,
-    this.localHostname,
-    this.environment,
-    this.executable,
-    this.resolvedExecutable,
-    this.script,
-    this.executableArguments,
+    required this.numberOfProcessors,
+    required this.pathSeparator,
+    required this.operatingSystem,
+    required this.operatingSystemVersion,
+    required this.localHostname,
+    required this.environment,
+    required this.executable,
+    required this.resolvedExecutable,
+    required this.script,
+    required this.executableArguments,
     this.packageRoot,
     this.packageConfig,
-    this.version,
-    this.stdinSupportsAnsi,
-    this.stdoutSupportsAnsi,
-    this.localeName,
+    required this.version,
+    required this.stdinSupportsAnsi,
+    required this.stdoutSupportsAnsi,
+    required this.localeName,
   });
 
   /// Creates a new [FakePlatform] with properties whose initial values mirror
@@ -39,13 +40,13 @@ class FakePlatform extends Platform {
         operatingSystem = platform.operatingSystem,
         operatingSystemVersion = platform.operatingSystemVersion,
         localHostname = platform.localHostname,
-        environment = new Map<String, String>.from(platform.environment),
+        environment = Map<String, String>.from(platform.environment),
         executable = platform.executable,
         resolvedExecutable = platform.resolvedExecutable,
         script = platform.script,
         executableArguments =
-            new List<String>.from(platform.executableArguments),
-        packageRoot = platform.packageRoot,
+            List<String>.from(platform.executableArguments),
+        packageRoot = platform.packageRoot, // ignore: deprecated_member_use_from_same_package
         packageConfig = platform.packageConfig,
         version = platform.version,
         stdinSupportsAnsi = platform.stdinSupportsAnsi,
@@ -110,10 +111,10 @@ class FakePlatform extends Platform {
   List<String> executableArguments;
 
   @override
-  String packageRoot;
+  String? packageRoot;
 
   @override
-  String packageConfig;
+  String? packageConfig;
 
   @override
   String version;

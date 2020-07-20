@@ -2,6 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+// @dart=2.9
 import 'dart:convert';
 
 /// Provides API parity with the `Platform` class in `dart:io`, but using
@@ -101,14 +102,15 @@ abstract class Platform {
   /// Dart packages are looked up.
   ///
   /// If there is no `--package-root` flag, `null` is returned.
-  String get packageRoot;
+  @deprecated
+  String? get packageRoot;
 
   /// The value of the `--packages` flag passed to the executable
   /// used to run the script in this isolate. This is the configuration which
   /// specifies how Dart packages are looked up.
   ///
   /// If there is no `--packages` flag, `null` is returned.
-  String get packageConfig;
+  String? get packageConfig;
 
   /// The version of the current Dart runtime.
   ///
@@ -139,7 +141,7 @@ abstract class Platform {
       'resolvedExecutable': resolvedExecutable,
       'script': script.toString(),
       'executableArguments': executableArguments,
-      'packageRoot': packageRoot,
+      'packageRoot': packageRoot, // ignore: deprecated_member_use_from_same_package
       'packageConfig': packageConfig,
       'version': version,
       'stdinSupportsAnsi': stdinSupportsAnsi,
