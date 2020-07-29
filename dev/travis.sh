@@ -15,7 +15,7 @@ echo "PASSED"
 
 # Make sure we pass the analyzer
 echo "Checking dartanalyzer..."
-fails_analyzer="$(find lib test dev -name "*.dart" | xargs dartanalyzer --options .analysis_options)"
+fails_analyzer="$(find lib test dev -name "*.dart" | xargs dartanalyzer --options analysis_options.yaml)"
 if [[ "$fails_analyzer" == *"[error]"* ]]; then
   echo "FAILED"
   echo "$fails_analyzer"
