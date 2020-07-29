@@ -18,7 +18,8 @@ void _expectPlatformsEqual(Platform actual, Platform expected) {
   expect(actual.resolvedExecutable, expected.resolvedExecutable);
   expect(actual.script, expected.script);
   expect(actual.executableArguments, expected.executableArguments);
-  expect(actual.packageRoot,
+  expect(
+      actual.packageRoot, // ignore: deprecated_member_use_from_same_package
       expected.packageRoot); // ignore: deprecated_member_use_from_same_package
   expect(actual.packageConfig, expected.packageConfig);
   expect(actual.version, expected.version);
