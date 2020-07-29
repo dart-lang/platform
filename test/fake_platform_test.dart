@@ -18,7 +18,9 @@ void _expectPlatformsEqual(Platform actual, Platform expected) {
   expect(actual.resolvedExecutable, expected.resolvedExecutable);
   expect(actual.script, expected.script);
   expect(actual.executableArguments, expected.executableArguments);
-  expect(actual.packageRoot, expected.packageRoot);
+  expect(
+      actual.packageRoot, // ignore: deprecated_member_use_from_same_package
+      expected.packageRoot); // ignore: deprecated_member_use_from_same_package
   expect(actual.packageConfig, expected.packageConfig);
   expect(actual.version, expected.version);
   expect(actual.localeName, expected.localeName);
@@ -86,5 +88,22 @@ void main() {
         _expectPlatformsEqual(fake, local);
       });
     });
+  });
+
+  test('Throws when unset non-null values are read', () {
+    final FakePlatform platform = FakePlatform();
+
+    expect(() => platform.numberOfProcessors, throwsA(isStateError));
+    expect(() => platform.pathSeparator, throwsA(isStateError));
+    expect(() => platform.operatingSystem, throwsA(isStateError));
+    expect(() => platform.operatingSystemVersion, throwsA(isStateError));
+    expect(() => platform.localHostname, throwsA(isStateError));
+    expect(() => platform.environment, throwsA(isStateError));
+    expect(() => platform.executable, throwsA(isStateError));
+    expect(() => platform.resolvedExecutable, throwsA(isStateError));
+    expect(() => platform.script, throwsA(isStateError));
+    expect(() => platform.executableArguments, throwsA(isStateError));
+    expect(() => platform.version, throwsA(isStateError));
+    expect(() => platform.localeName, throwsA(isStateError));
   });
 }

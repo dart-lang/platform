@@ -2,6 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+// @dart=2.10
 import 'dart:io' as io show Platform, stdin, stdout;
 
 import 'platform.dart';
@@ -42,10 +43,11 @@ class LocalPlatform extends Platform {
   List<String> get executableArguments => io.Platform.executableArguments;
 
   @override
-  String get packageRoot => io.Platform.packageRoot;
+  String? get packageRoot =>
+      io.Platform.packageRoot; // ignore: deprecated_member_use
 
   @override
-  String get packageConfig => io.Platform.packageConfig;
+  String? get packageConfig => io.Platform.packageConfig;
 
   @override
   String get version => io.Platform.version;

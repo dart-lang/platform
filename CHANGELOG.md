@@ -1,3 +1,7 @@
+### 3.0.0-nullsafety
+
+* Migrate package to null-safe dart.
+
 ### 2.2.1
 
 * Add `operatingSystemVersion`
