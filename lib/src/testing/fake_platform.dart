@@ -12,46 +12,60 @@ class FakePlatform extends Platform {
   /// Creates a new [FakePlatform] with the specified properties.
   ///
   /// Unspecified properties will *not* be assigned default values (they will
-  /// remain `null`).
+  /// remain `null`). If an unset non-null value is read, a [StateError] will
+  /// be thrown instead of returnin `null`.
   FakePlatform({
-    required this.numberOfProcessors,
-    required this.pathSeparator,
-    required this.operatingSystem,
-    required this.operatingSystemVersion,
-    required this.localHostname,
-    required this.environment,
-    required this.executable,
-    required this.resolvedExecutable,
-    required this.script,
-    required this.executableArguments,
+    int? numberOfProcessors,
+    String? pathSeparator,
+    String? operatingSystem,
+    String? operatingSystemVersion,
+    String? localHostname,
+    Map<String, String>? environment,
+    String? executable,
+    String? resolvedExecutable,
+    Uri? script,
+    List<String>? executableArguments,
     this.packageRoot,
     this.packageConfig,
-    required this.version,
-    required this.stdinSupportsAnsi,
-    required this.stdoutSupportsAnsi,
-    required this.localeName,
-  });
+    String? version,
+    bool? stdinSupportsAnsi,
+    bool? stdoutSupportsAnsi,
+    String? localeName,
+  })  : _numberOfProcessors = numberOfProcessors,
+        _pathSeparator = pathSeparator,
+        _operatingSystem = operatingSystem,
+        _operatingSystemVersion = operatingSystemVersion,
+        _localHostname = localHostname,
+        _environment = environment,
+        _executable = executable,
+        _resolvedExecutable = resolvedExecutable,
+        _script = script,
+        _executableArguments = executableArguments,
+        _version = version,
+        _stdinSupportsAnsi = stdinSupportsAnsi,
+        _stdoutSupportsAnsi = stdoutSupportsAnsi,
+        _localeName = localeName;
 
   /// Creates a new [FakePlatform] with properties whose initial values mirror
   /// the specified [platform].
   FakePlatform.fromPlatform(Platform platform)
-      : numberOfProcessors = platform.numberOfProcessors,
-        pathSeparator = platform.pathSeparator,
-        operatingSystem = platform.operatingSystem,
-        operatingSystemVersion = platform.operatingSystemVersion,
-        localHostname = platform.localHostname,
-        environment = Map<String, String>.from(platform.environment),
-        executable = platform.executable,
-        resolvedExecutable = platform.resolvedExecutable,
-        script = platform.script,
-        executableArguments = List<String>.from(platform.executableArguments),
+      : _numberOfProcessors = platform.numberOfProcessors,
+        _pathSeparator = platform.pathSeparator,
+        _operatingSystem = platform.operatingSystem,
+        _operatingSystemVersion = platform.operatingSystemVersion,
+        _localHostname = platform.localHostname,
+        _environment = Map<String, String>.from(platform.environment),
+        _executable = platform.executable,
+        _resolvedExecutable = platform.resolvedExecutable,
+        _script = platform.script,
+        _executableArguments = List<String>.from(platform.executableArguments),
         packageRoot = platform
             .packageRoot, // ignore: deprecated_member_use_from_same_package
         packageConfig = platform.packageConfig,
-        version = platform.version,
-        stdinSupportsAnsi = platform.stdinSupportsAnsi,
-        stdoutSupportsAnsi = platform.stdoutSupportsAnsi,
-        localeName = platform.localeName;
+        _version = platform.version,
+        _stdinSupportsAnsi = platform.stdinSupportsAnsi,
+        _stdoutSupportsAnsi = platform.stdoutSupportsAnsi,
+        _localeName = platform.localeName;
 
   /// Creates a new [FakePlatform] with properties extracted from the encoded
   /// JSON string.
@@ -81,34 +95,44 @@ class FakePlatform extends Platform {
   }
 
   @override
-  int numberOfProcessors;
+  int get numberOfProcessors => _throwIfNull(_numberOfProcessors);
+  int? _numberOfProcessors;
 
   @override
-  String pathSeparator;
+  String get pathSeparator => _throwIfNull(_pathSeparator);
+  String? _pathSeparator;
 
   @override
-  String operatingSystem;
+  String get operatingSystem => _throwIfNull(_operatingSystem);
+  String? _operatingSystem;
 
   @override
-  String operatingSystemVersion;
+  String get operatingSystemVersion => _throwIfNull(_operatingSystemVersion);
+  String? _operatingSystemVersion;
 
   @override
-  String localHostname;
+  String get localHostname => _throwIfNull(_localHostname);
+  String? _localHostname;
 
   @override
-  Map<String, String> environment;
+  Map<String, String> get environment => _throwIfNull(_environment);
+  Map<String, String>? _environment;
 
   @override
-  String executable;
+  String get executable => _throwIfNull(_executable);
+  String? _executable;
 
   @override
-  String resolvedExecutable;
+  String get resolvedExecutable => _throwIfNull(_resolvedExecutable);
+  String? _resolvedExecutable;
 
   @override
-  Uri script;
+  Uri get script => _throwIfNull(_script);
+  Uri? _script;
 
   @override
-  List<String> executableArguments;
+  List<String> get executableArguments => _throwIfNull(_executableArguments);
+  List<String>? _executableArguments;
 
   @override
   String? packageRoot;
@@ -117,14 +141,26 @@ class FakePlatform extends Platform {
   String? packageConfig;
 
   @override
-  String version;
+  String get version => _throwIfNull(_version);
+  String? _version;
 
   @override
-  bool stdinSupportsAnsi;
+  bool get stdinSupportsAnsi => _throwIfNull(_stdinSupportsAnsi);
+  bool? _stdinSupportsAnsi;
 
   @override
-  bool stdoutSupportsAnsi;
+  bool get stdoutSupportsAnsi => _throwIfNull(_stdoutSupportsAnsi);
+  bool? _stdoutSupportsAnsi;
 
   @override
-  String localeName;
+  String get localeName => _throwIfNull(_localeName);
+  String? _localeName;
+
+  T _throwIfNull<T>(T? value) {
+    if (value == null) {
+      throw StateError(
+          'Tried to read property of FakePlatform but it was unset.');
+    }
+    return value;
+  }
 }

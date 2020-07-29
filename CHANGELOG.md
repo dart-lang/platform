@@ -1,8 +1,6 @@
 ### 3.0.0-nullsafety
 
 * Migrate package to null-safe dart.
-* Most parameters of the `FakePlatform` constructor are now required to match
-  non-nullability of `Platform` APIs.
 
 ### 2.2.1
 

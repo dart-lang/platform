@@ -89,4 +89,21 @@ void main() {
       });
     });
   });
+
+  test('Throws when unset non-null values are read', () {
+    final FakePlatform platform = FakePlatform();
+
+    expect(() => platform.numberOfProcessors, throwsA(isStateError));
+    expect(() => platform.pathSeparator, throwsA(isStateError));
+    expect(() => platform.operatingSystem, throwsA(isStateError));
+    expect(() => platform.operatingSystemVersion, throwsA(isStateError));
+    expect(() => platform.localHostname, throwsA(isStateError));
+    expect(() => platform.environment, throwsA(isStateError));
+    expect(() => platform.executable, throwsA(isStateError));
+    expect(() => platform.resolvedExecutable, throwsA(isStateError));
+    expect(() => platform.script, throwsA(isStateError));
+    expect(() => platform.executableArguments, throwsA(isStateError));
+    expect(() => platform.version, throwsA(isStateError));
+    expect(() => platform.localeName, throwsA(isStateError));
+  });
 }
