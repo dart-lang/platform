@@ -43,7 +43,8 @@ class LocalPlatform extends Platform {
   List<String> get executableArguments => io.Platform.executableArguments;
 
   @override
-  String? get packageRoot => io.Platform.packageRoot; // ignore: deprecated_member_use
+  String? get packageRoot =>
+      io.Platform.packageRoot; // ignore: deprecated_member_use
 
   @override
   String? get packageConfig => io.Platform.packageConfig;

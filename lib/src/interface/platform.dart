@@ -141,7 +141,8 @@ abstract class Platform {
       'resolvedExecutable': resolvedExecutable,
       'script': script.toString(),
       'executableArguments': executableArguments,
-      'packageRoot': packageRoot, // ignore: deprecated_member_use_from_same_package
+      'packageRoot':
+          packageRoot, // ignore: deprecated_member_use_from_same_package
       'packageConfig': packageConfig,
       'version': version,
       'stdinSupportsAnsi': stdinSupportsAnsi,

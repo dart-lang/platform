@@ -44,9 +44,9 @@ class FakePlatform extends Platform {
         executable = platform.executable,
         resolvedExecutable = platform.resolvedExecutable,
         script = platform.script,
-        executableArguments =
-            List<String>.from(platform.executableArguments),
-        packageRoot = platform.packageRoot, // ignore: deprecated_member_use_from_same_package
+        executableArguments = List<String>.from(platform.executableArguments),
+        packageRoot = platform
+            .packageRoot, // ignore: deprecated_member_use_from_same_package
         packageConfig = platform.packageConfig,
         version = platform.version,
         stdinSupportsAnsi = platform.stdinSupportsAnsi,
