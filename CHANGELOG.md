@@ -1,3 +1,7 @@
+### 3.0.0-nullsafety.2
+
+* Update supported SDK range.
+
 ### 3.0.0-nullsafety.1
 
 * Migrate package to null-safe dart.
