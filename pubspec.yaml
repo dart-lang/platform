@@ -1,5 +1,5 @@
 name: platform
-version: 3.0.0-nullsafety.1
+version: 3.0.0-nullsafety.2
 description: A pluggable, mockable platform abstraction for Dart.
 homepage: https://github.com/google/platform.dart
 
@@ -7,4 +7,4 @@ dev_dependencies:
   test: ^1.16.0-nullsafety.1
 
 environment:
-  sdk: '>=2.10.0-4.0.dev <2.10.0'
+  sdk: '>=2.10.0-0.0 <2.11.0'
