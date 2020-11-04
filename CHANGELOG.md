@@ -1,3 +1,11 @@
+### 3.0.0-nullsafety.4
+
+* Update supported SDK range.
+
+### 3.0.0-nullsafety.3
+
+* Update supported SDK range.
+
 ### 3.0.0-nullsafety.2
 
 * Update supported SDK range.
