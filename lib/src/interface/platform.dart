@@ -11,6 +11,54 @@ abstract class Platform {
   /// Creates a new [Platform].
   const Platform();
 
+  /// A string constant to compare with [operatingSystem] to see if the platform
+  /// is Linux.
+  /// 
+  /// Useful in case statements when switching on [operatingSystem].
+  /// 
+  /// To just check if the platform is Linux, use [isLinux].
+  static const String linux = 'linux';
+
+  /// A string constant to compare with [operatingSystem] to see if the platform
+  /// is Windows.
+  /// 
+  /// Useful in case statements when switching on [operatingSystem].
+  /// 
+  /// To just check if the platform is Windows, use [isWindows].
+  static const String windows = 'windows';
+
+  /// A string constant to compare with [operatingSystem] to see if the platform
+  /// is macOS.
+  /// 
+  /// Useful in case statements when switching on [operatingSystem].
+  /// 
+  /// To just check if the platform is macOS, use [isMacOS].
+  static const String macOS = 'macos';
+
+  /// A string constant to compare with [operatingSystem] to see if the platform
+  /// is Android.
+  /// 
+  /// Useful in case statements when switching on [operatingSystem].
+  /// 
+  /// To just check if the platform is Android, use [isAndroid].
+  static const String android = 'android';
+
+  /// A string constant to compare with [operatingSystem] to see if the platform
+  /// is iOS.
+  ///
+  /// Useful in case statements when switching on [operatingSystem].
+  ///
+  /// To just check if the platform is iOS, use [isIOS].
+  static const String iOS = 'ios';
+
+  /// A string constant to compare with [operatingSystem] to see if the platform
+  /// is Fuchsia.
+  /// 
+  /// Useful in case statements when switching on [operatingSystem].
+  /// 
+  /// To just check if the platform is Fuchsia, use [isFuchsia].
+  static const String fuchsia = 'fuchsia';
+
   /// The number of processors of the machine.
   int get numberOfProcessors;
 
@@ -29,22 +77,22 @@ abstract class Platform {
   String get localHostname;
 
   /// True if the operating system is Linux.
-  bool get isLinux => (operatingSystem == "linux");
+  bool get isLinux => operatingSystem == linux;
 
   /// True if the operating system is OS X.
-  bool get isMacOS => (operatingSystem == "macos");
+  bool get isMacOS => operatingSystem == macOS;
 
   /// True if the operating system is Windows.
-  bool get isWindows => (operatingSystem == "windows");
+  bool get isWindows => operatingSystem == windows;
 
   /// True if the operating system is Android.
-  bool get isAndroid => (operatingSystem == "android");
+  bool get isAndroid => operatingSystem == android;
 
   /// True if the operating system is iOS.
-  bool get isIOS => (operatingSystem == "ios");
+  bool get isIOS => operatingSystem == iOS;
 
   /// True if the operating system is Fuchsia
-  bool get isFuchsia => (operatingSystem == "fuchsia");
+  bool get isFuchsia => operatingSystem == fuchsia;
 
   /// The environment for this process.
   ///
