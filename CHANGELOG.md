@@ -1,3 +1,8 @@
+### 3.0.1
+
+* Added string constants for each of the supported platforms for use in switch
+  statements.
+
 ### 3.0.0
 
 * First stable null safe release.
