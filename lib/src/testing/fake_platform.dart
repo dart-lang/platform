@@ -113,10 +113,11 @@ class FakePlatform extends Platform {
     String? localeName,
   }) {
     return FakePlatform(
-     numberOfProcessors: numberOfProcessors ?? this.numberOfProcessors,
+      numberOfProcessors: numberOfProcessors ?? this.numberOfProcessors,
       pathSeparator: pathSeparator ?? this.pathSeparator,
       operatingSystem: operatingSystem ?? this.operatingSystem,
-      operatingSystemVersion: operatingSystemVersion ?? this.operatingSystemVersion,
+      operatingSystemVersion:
+          operatingSystemVersion ?? this.operatingSystemVersion,
       localHostname: localHostname ?? this.localHostname,
       environment: environment ?? this.environment,
       executable: executable ?? this.executable,

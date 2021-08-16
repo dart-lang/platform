@@ -1,3 +1,7 @@
+### 3.0.2
+
+* Added `FakePlatform.copyWith` function.
+
 ### 3.0.1
 
 * Added string constants for each of the supported platforms for use in switch
