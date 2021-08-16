@@ -4,9 +4,9 @@
 # BSD-style license that can be found in the LICENSE file.
 
 # Make sure dartfmt is run on everything
-echo "Checking dartfmt..."
-needs_dartfmt="$(dartfmt -n lib test dev)"
-if [[ -n "$needs_dartfmt" ]]; then
+echo "Checking dart format..."
+needs_dartfmt="$(dart format --set-exit-if-changed --output=none lib test dev)"
+if [[ $? != 0 ]]; then
   echo "FAILED"
   echo "$needs_dartfmt"
   exit 1

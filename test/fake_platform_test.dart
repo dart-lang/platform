@@ -59,6 +59,70 @@ void main() {
       });
     });
 
+    group('copyWith', () {
+      setUp(() {
+        fake = new FakePlatform.fromPlatform(local);
+      });
+
+      test('overrides a value, but leaves others intact', () {
+        FakePlatform copy = fake.copyWith(
+          numberOfProcessors: -1,
+        );
+        expect(copy.numberOfProcessors, equals(-1));
+        expect(copy.pathSeparator, local.pathSeparator);
+        expect(copy.operatingSystem, local.operatingSystem);
+        expect(copy.operatingSystemVersion, local.operatingSystemVersion);
+        expect(copy.localHostname, local.localHostname);
+        expect(copy.environment, local.environment);
+        expect(copy.executable, local.executable);
+        expect(copy.resolvedExecutable, local.resolvedExecutable);
+        expect(copy.script, local.script);
+        expect(copy.executableArguments, local.executableArguments);
+        // ignore: deprecated_member_use_from_same_package
+        expect(copy.packageRoot, local.packageRoot);
+        expect(copy.packageConfig, local.packageConfig);
+        expect(copy.version, local.version);
+        expect(copy.localeName, local.localeName);
+      });
+      test('can override all values', () {
+        fake = new FakePlatform(
+          numberOfProcessors: 8,
+          pathSeparator: ':',
+          operatingSystem: 'fake',
+          operatingSystemVersion: '0.1.0',
+          localHostname: 'host',
+          environment: <String, String>{'PATH': '.'},
+          executable: 'executable',
+          resolvedExecutable: '/executable',
+          script: new Uri.file('/platform/test/fake_platform_test.dart'),
+          executableArguments: <String>['scriptarg'],
+          version: '0.1.1',
+          stdinSupportsAnsi: false,
+          stdoutSupportsAnsi: true,
+          localeName: 'local',
+        );
+        FakePlatform copy = fake.copyWith(
+          numberOfProcessors: local.numberOfProcessors,
+          pathSeparator: local.pathSeparator,
+          operatingSystem: local.operatingSystem,
+          operatingSystemVersion: local.operatingSystemVersion,
+          localHostname: local.localHostname,
+          environment: local.environment,
+          executable: local.executable,
+          resolvedExecutable: local.resolvedExecutable,
+          script: local.script,
+          executableArguments: local.executableArguments,
+          packageRoot: local.packageRoot,
+          packageConfig: local.packageConfig,
+          version: local.version,
+          stdinSupportsAnsi: local.stdinSupportsAnsi,
+          stdoutSupportsAnsi: local.stdoutSupportsAnsi,
+          localeName: local.localeName,
+        );
+        _expectPlatformsEqual(copy, local);
+      });
+    });
+
     group('json', () {
       test('fromJson', () {
         String json = new io.File('test/platform.json').readAsStringSync();
