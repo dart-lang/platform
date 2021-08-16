@@ -93,6 +93,45 @@ class FakePlatform extends Platform {
     );
   }
 
+  /// Creates a new [FakePlatform] from this one, with some properties replaced by the given properties.
+  FakePlatform copyWith({
+    int? numberOfProcessors,
+    String? pathSeparator,
+    String? operatingSystem,
+    String? operatingSystemVersion,
+    String? localHostname,
+    Map<String, String>? environment,
+    String? executable,
+    String? resolvedExecutable,
+    Uri? script,
+    List<String>? executableArguments,
+    String? packageRoot,
+    String? packageConfig,
+    String? version,
+    bool? stdinSupportsAnsi,
+    bool? stdoutSupportsAnsi,
+    String? localeName,
+  }) {
+    return FakePlatform(
+     numberOfProcessors: numberOfProcessors ?? this.numberOfProcessors,
+      pathSeparator: pathSeparator ?? this.pathSeparator,
+      operatingSystem: operatingSystem ?? this.operatingSystem,
+      operatingSystemVersion: operatingSystemVersion ?? this.operatingSystemVersion,
+      localHostname: localHostname ?? this.localHostname,
+      environment: environment ?? this.environment,
+      executable: executable ?? this.executable,
+      resolvedExecutable: resolvedExecutable ?? this.resolvedExecutable,
+      script: script ?? this.script,
+      executableArguments: executableArguments ?? this.executableArguments,
+      packageRoot: packageRoot ?? this.packageRoot,
+      packageConfig: packageConfig ?? this.packageConfig,
+      version: version ?? this.version,
+      stdinSupportsAnsi: stdinSupportsAnsi ?? this.stdinSupportsAnsi,
+      stdoutSupportsAnsi: stdoutSupportsAnsi ?? this.stdoutSupportsAnsi,
+      localeName: localeName ?? this.localeName,
+    );
+  }
+
   @override
   int get numberOfProcessors => _throwIfNull(_numberOfProcessors);
   int? _numberOfProcessors;
