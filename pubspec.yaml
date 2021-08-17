@@ -4,7 +4,7 @@ description: A pluggable, mockable platform abstraction for Dart.
 homepage: https://github.com/google/platform.dart
 
 environment:
-  sdk: '>=2.12.0-0 <3.0.0'
+  sdk: '>=2.12.0 <3.0.0'
 
 dev_dependencies:
   test: ^1.16.8
