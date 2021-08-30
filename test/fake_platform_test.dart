@@ -32,13 +32,13 @@ void main() {
     late LocalPlatform local;
 
     setUp(() {
-      fake = new FakePlatform();
-      local = new LocalPlatform();
+      fake = FakePlatform();
+      local = LocalPlatform();
     });
 
     group('fromPlatform', () {
       setUp(() {
-        fake = new FakePlatform.fromPlatform(local);
+        fake = FakePlatform.fromPlatform(local);
       });
 
       test('copiesAllProperties', () {
@@ -61,7 +61,7 @@ void main() {
 
     group('copyWith', () {
       setUp(() {
-        fake = new FakePlatform.fromPlatform(local);
+        fake = FakePlatform.fromPlatform(local);
       });
 
       test('overrides a value, but leaves others intact', () {
@@ -85,7 +85,7 @@ void main() {
         expect(copy.localeName, local.localeName);
       });
       test('can override all values', () {
-        fake = new FakePlatform(
+        fake = FakePlatform(
           numberOfProcessors: 8,
           pathSeparator: ':',
           operatingSystem: 'fake',
@@ -94,7 +94,7 @@ void main() {
           environment: <String, String>{'PATH': '.'},
           executable: 'executable',
           resolvedExecutable: '/executable',
-          script: new Uri.file('/platform/test/fake_platform_test.dart'),
+          script: Uri.file('/platform/test/fake_platform_test.dart'),
           executableArguments: <String>['scriptarg'],
           version: '0.1.1',
           stdinSupportsAnsi: false,
@@ -125,8 +125,8 @@ void main() {
 
     group('json', () {
       test('fromJson', () {
-        String json = new io.File('test/platform.json').readAsStringSync();
-        fake = new FakePlatform.fromJson(json);
+        String json = io.File('test/platform.json').readAsStringSync();
+        fake = FakePlatform.fromJson(json);
         expect(fake.numberOfProcessors, 8);
         expect(fake.pathSeparator, '/');
         expect(fake.operatingSystem, 'macos');
@@ -139,7 +139,7 @@ void main() {
         expect(fake.executable, '/bin/dart');
         expect(fake.resolvedExecutable, '/bin/dart');
         expect(fake.script,
-            new Uri.file('/platform/test/fake_platform_test.dart'));
+            Uri.file('/platform/test/fake_platform_test.dart'));
         expect(fake.executableArguments, <String>['--checked']);
         expect(fake.packageRoot, null);
         expect(fake.packageConfig, null);
@@ -148,7 +148,7 @@ void main() {
       });
 
       test('fromJsonToJson', () {
-        fake = new FakePlatform.fromJson(local.toJson());
+        fake = FakePlatform.fromJson(local.toJson());
         _expectPlatformsEqual(fake, local);
       });
     });

@@ -72,8 +72,8 @@ class FakePlatform extends Platform {
   /// [json] must be a JSON string that matches the encoding produced by
   /// [toJson].
   factory FakePlatform.fromJson(String json) {
-    Map<String, dynamic> map = new JsonDecoder().convert(json);
-    return new FakePlatform(
+    Map<String, dynamic> map = JsonDecoder().convert(json);
+    return FakePlatform(
       numberOfProcessors: map['numberOfProcessors'],
       pathSeparator: map['pathSeparator'],
       operatingSystem: map['operatingSystem'],

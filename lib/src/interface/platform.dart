@@ -159,12 +159,14 @@ abstract class Platform {
   /// list containing the flags passed to the executable.
   List<String> get executableArguments;
 
-  /// The value of the `--package-root` flag passed to the executable
-  /// used to run the script in this isolate.  This is the directory in which
-  /// Dart packages are looked up.
+  /// Deprecated, do not use.
   ///
-  /// If there is no `--package-root` flag, `null` is returned.
-  @deprecated
+  /// This used to be the value of the `--package-root` flag passed to the
+  /// executable used to run the script in this isolate, but is no longer
+  /// supported in Dart 2.
+  ///
+  /// Always returns null.
+  @Deprecated('packages/ directory resolution is not supported in Dart 2.')
   String? get packageRoot;
 
   /// The value of the `--packages` flag passed to the executable
