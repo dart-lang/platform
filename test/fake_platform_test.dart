@@ -138,8 +138,7 @@ void main() {
         });
         expect(fake.executable, '/bin/dart');
         expect(fake.resolvedExecutable, '/bin/dart');
-        expect(fake.script,
-            Uri.file('/platform/test/fake_platform_test.dart'));
+        expect(fake.script, Uri.file('/platform/test/fake_platform_test.dart'));
         expect(fake.executableArguments, <String>['--checked']);
         expect(fake.packageRoot, null);
         expect(fake.packageConfig, null);
