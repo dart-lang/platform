@@ -1,3 +1,7 @@
+### 3.0.3
+
+* Added `Platform.isWeb` function.
+
 ### 3.0.2
 
 * Added `FakePlatform.copyWith` function.

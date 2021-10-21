@@ -106,8 +106,11 @@ abstract class Platform {
   /// True if the operating system is iOS.
   bool get isIOS => operatingSystem == iOS;
 
-  /// True if the operating system is Fuchsia
+  /// True if the operating system is Fuchsia.
   bool get isFuchsia => operatingSystem == fuchsia;
+
+  /// True if the application was compiled to run on the web.
+  bool get isWeb => identical(0, 0.0);
 
   /// The environment for this process.
   ///
