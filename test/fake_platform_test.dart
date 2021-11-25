@@ -18,9 +18,6 @@ void _expectPlatformsEqual(Platform actual, Platform expected) {
   expect(actual.resolvedExecutable, expected.resolvedExecutable);
   expect(actual.script, expected.script);
   expect(actual.executableArguments, expected.executableArguments);
-  expect(
-      actual.packageRoot, // ignore: deprecated_member_use_from_same_package
-      expected.packageRoot); // ignore: deprecated_member_use_from_same_package
   expect(actual.packageConfig, expected.packageConfig);
   expect(actual.version, expected.version);
   expect(actual.localeName, expected.localeName);
@@ -78,8 +75,6 @@ void main() {
         expect(copy.resolvedExecutable, local.resolvedExecutable);
         expect(copy.script, local.script);
         expect(copy.executableArguments, local.executableArguments);
-        // ignore: deprecated_member_use_from_same_package
-        expect(copy.packageRoot, local.packageRoot);
         expect(copy.packageConfig, local.packageConfig);
         expect(copy.version, local.version);
         expect(copy.localeName, local.localeName);
@@ -112,7 +107,6 @@ void main() {
           resolvedExecutable: local.resolvedExecutable,
           script: local.script,
           executableArguments: local.executableArguments,
-          packageRoot: local.packageRoot,
           packageConfig: local.packageConfig,
           version: local.version,
           stdinSupportsAnsi: local.stdinSupportsAnsi,
@@ -140,7 +134,6 @@ void main() {
         expect(fake.resolvedExecutable, '/bin/dart');
         expect(fake.script, Uri.file('/platform/test/fake_platform_test.dart'));
         expect(fake.executableArguments, <String>['--checked']);
-        expect(fake.packageRoot, null);
         expect(fake.packageConfig, null);
         expect(fake.version, '1.22.0');
         expect(fake.localeName, 'de/de');

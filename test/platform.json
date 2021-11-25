@@ -14,7 +14,6 @@
   "executableArguments": [
     "--checked"
   ],
-  "packageRoot": null,
   "packageConfig": null,
   "version": "1.22.0",
   "localeName": "de/de"

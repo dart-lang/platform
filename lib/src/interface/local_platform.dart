@@ -42,9 +42,6 @@ class LocalPlatform extends Platform {
   List<String> get executableArguments => io.Platform.executableArguments;
 
   @override
-  String? get packageRoot => null;
-
-  @override
   String? get packageConfig => io.Platform.packageConfig;
 
   @override

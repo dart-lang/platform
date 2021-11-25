@@ -24,7 +24,6 @@ class FakePlatform extends Platform {
     String? resolvedExecutable,
     Uri? script,
     List<String>? executableArguments,
-    this.packageRoot,
     this.packageConfig,
     String? version,
     bool? stdinSupportsAnsi,
@@ -58,8 +57,6 @@ class FakePlatform extends Platform {
         _resolvedExecutable = platform.resolvedExecutable,
         _script = platform.script,
         _executableArguments = List<String>.from(platform.executableArguments),
-        packageRoot = platform
-            .packageRoot, // ignore: deprecated_member_use_from_same_package
         packageConfig = platform.packageConfig,
         _version = platform.version,
         _stdinSupportsAnsi = platform.stdinSupportsAnsi,
@@ -84,7 +81,6 @@ class FakePlatform extends Platform {
       resolvedExecutable: map['resolvedExecutable'],
       script: Uri.parse(map['script']),
       executableArguments: map['executableArguments'].cast<String>(),
-      packageRoot: map['packageRoot'],
       packageConfig: map['packageConfig'],
       version: map['version'],
       stdinSupportsAnsi: map['stdinSupportsAnsi'],
@@ -105,7 +101,6 @@ class FakePlatform extends Platform {
     String? resolvedExecutable,
     Uri? script,
     List<String>? executableArguments,
-    String? packageRoot,
     String? packageConfig,
     String? version,
     bool? stdinSupportsAnsi,
@@ -124,7 +119,6 @@ class FakePlatform extends Platform {
       resolvedExecutable: resolvedExecutable ?? this.resolvedExecutable,
       script: script ?? this.script,
       executableArguments: executableArguments ?? this.executableArguments,
-      packageRoot: packageRoot ?? this.packageRoot,
       packageConfig: packageConfig ?? this.packageConfig,
       version: version ?? this.version,
       stdinSupportsAnsi: stdinSupportsAnsi ?? this.stdinSupportsAnsi,
@@ -172,9 +166,6 @@ class FakePlatform extends Platform {
   @override
   List<String> get executableArguments => _throwIfNull(_executableArguments);
   List<String>? _executableArguments;
-
-  @override
-  String? packageRoot;
 
   @override
   String? packageConfig;
