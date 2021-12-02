@@ -1,3 +1,8 @@
+### 3.1.0
+
+* Removed `Platform.packageRoot`, which was already marked deprecated, and which
+  didn't work in Dart 2.
+
 ### 3.0.2
 
 * Added `FakePlatform.copyWith` function.
