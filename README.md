@@ -1,3 +1,4 @@
+[![Dart CI](https://github.com/google/platform.dart/actions/workflows/platform.yml/badge.svg)](https://github.com/google/platform.dart/actions/workflows/platform.yml)
 [![Pub](https://img.shields.io/pub/v/platform.svg)](https://pub.dartlang.org/packages/platform)
 
 A generic platform abstraction for Dart.

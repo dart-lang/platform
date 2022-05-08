@@ -1,4 +1,4 @@
-name: Platform Package
+name: Dart CI
 
 on:
   push:

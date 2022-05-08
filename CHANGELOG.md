@@ -1,3 +1,7 @@
+### 3.1.1-dev
+
+* Populated the pubspec `repository` field.
+
 ### 3.1.0
 
 * Removed `Platform.packageRoot`, which was already marked deprecated, and which
