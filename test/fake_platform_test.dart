@@ -43,7 +43,7 @@ void main() {
       });
 
       test('convertsPropertiesToMutable', () {
-        final String key = fake.environment.keys.first;
+        final key = fake.environment.keys.first;
 
         expect(fake.environment[key], local.environment[key]);
         fake.environment[key] = 'FAKE';
@@ -62,7 +62,7 @@ void main() {
       });
 
       test('overrides a value, but leaves others intact', () {
-        final FakePlatform copy = fake.copyWith(
+        final copy = fake.copyWith(
           numberOfProcessors: -1,
         );
         expect(copy.numberOfProcessors, equals(-1));
@@ -96,7 +96,7 @@ void main() {
           stdoutSupportsAnsi: true,
           localeName: 'local',
         );
-        final FakePlatform copy = fake.copyWith(
+        final copy = fake.copyWith(
           numberOfProcessors: local.numberOfProcessors,
           pathSeparator: local.pathSeparator,
           operatingSystem: local.operatingSystem,
@@ -119,7 +119,7 @@ void main() {
 
     group('json', () {
       test('fromJson', () {
-        final String json = io.File('test/platform.json').readAsStringSync();
+        final json = io.File('test/platform.json').readAsStringSync();
         fake = FakePlatform.fromJson(json);
         expect(fake.numberOfProcessors, 8);
         expect(fake.pathSeparator, '/');
@@ -147,7 +147,7 @@ void main() {
   });
 
   test('Throws when unset non-null values are read', () {
-    final FakePlatform platform = FakePlatform();
+    final platform = FakePlatform();
 
     expect(() => platform.numberOfProcessors, throwsA(isStateError));
     expect(() => platform.pathSeparator, throwsA(isStateError));

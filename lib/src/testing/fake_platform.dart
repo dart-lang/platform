@@ -69,8 +69,7 @@ class FakePlatform extends Platform {
   /// [json] must be a JSON string that matches the encoding produced by
   /// [toJson].
   factory FakePlatform.fromJson(String json) {
-    final Map<String, dynamic> map =
-        const JsonDecoder().convert(json) as Map<String, dynamic>;
+    final map = const JsonDecoder().convert(json) as Map<String, dynamic>;
     return FakePlatform(
       numberOfProcessors: map['numberOfProcessors'] as int?,
       pathSeparator: map['pathSeparator'] as String?,
@@ -92,7 +91,8 @@ class FakePlatform extends Platform {
     );
   }
 
-  /// Creates a new [FakePlatform] from this one, with some properties replaced by the given properties.
+  /// Creates a new [FakePlatform] from this one, with some properties replaced
+  /// by the given properties.
   FakePlatform copyWith({
     int? numberOfProcessors,
     String? pathSeparator,
