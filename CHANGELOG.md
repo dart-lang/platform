@@ -1,4 +1,4 @@
-## NEXT
+## 3.1.5
 
 * Updates minimum supported SDK version to Flutter 3.16/Dart 3.2.
 * Transfers the package source from https://github.com/flutter/packages
