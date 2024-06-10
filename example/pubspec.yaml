@@ -1,0 +1,14 @@
+name: example
+description: Demonstrates how to use the platform api.
+version: 1.0.0
+publish_to: none
+
+environment:
+  sdk: ^3.2.0
+
+dependencies:
+  platform:
+    path: ../
+
+dev_dependencies:
+  lints: ^4.0.0

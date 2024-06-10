@@ -1,6 +1,6 @@
-// Copyright (c) 2017, the Dart project authors.  Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
+// Copyright 2013 The Flutter Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
 
 import 'dart:convert';
 
@@ -12,7 +12,7 @@ class FakePlatform extends Platform {
   ///
   /// Unspecified properties will *not* be assigned default values (they will
   /// remain `null`). If an unset non-null value is read, a [StateError] will
-  /// be thrown instead of returnin `null`.
+  /// be thrown instead of returning `null`.
   FakePlatform({
     int? numberOfProcessors,
     String? pathSeparator,
@@ -69,27 +69,30 @@ class FakePlatform extends Platform {
   /// [json] must be a JSON string that matches the encoding produced by
   /// [toJson].
   factory FakePlatform.fromJson(String json) {
-    Map<String, dynamic> map = JsonDecoder().convert(json);
+    final map = const JsonDecoder().convert(json) as Map<String, dynamic>;
     return FakePlatform(
-      numberOfProcessors: map['numberOfProcessors'],
-      pathSeparator: map['pathSeparator'],
-      operatingSystem: map['operatingSystem'],
-      operatingSystemVersion: map['operatingSystemVersion'],
-      localHostname: map['localHostname'],
-      environment: map['environment'].cast<String, String>(),
-      executable: map['executable'],
-      resolvedExecutable: map['resolvedExecutable'],
-      script: Uri.parse(map['script']),
-      executableArguments: map['executableArguments'].cast<String>(),
-      packageConfig: map['packageConfig'],
-      version: map['version'],
-      stdinSupportsAnsi: map['stdinSupportsAnsi'],
-      stdoutSupportsAnsi: map['stdoutSupportsAnsi'],
-      localeName: map['localeName'],
+      numberOfProcessors: map['numberOfProcessors'] as int?,
+      pathSeparator: map['pathSeparator'] as String?,
+      operatingSystem: map['operatingSystem'] as String?,
+      operatingSystemVersion: map['operatingSystemVersion'] as String?,
+      localHostname: map['localHostname'] as String?,
+      environment:
+          (map['environment'] as Map<Object?, Object?>).cast<String, String>(),
+      executable: map['executable'] as String?,
+      resolvedExecutable: map['resolvedExecutable'] as String?,
+      script: Uri.parse(map['script'] as String),
+      executableArguments:
+          (map['executableArguments'] as List<Object?>).cast<String>(),
+      packageConfig: map['packageConfig'] as String?,
+      version: map['version'] as String?,
+      stdinSupportsAnsi: map['stdinSupportsAnsi'] as bool?,
+      stdoutSupportsAnsi: map['stdoutSupportsAnsi'] as bool?,
+      localeName: map['localeName'] as String?,
     );
   }
 
-  /// Creates a new [FakePlatform] from this one, with some properties replaced by the given properties.
+  /// Creates a new [FakePlatform] from this one, with some properties replaced
+  /// by the given properties.
   FakePlatform copyWith({
     int? numberOfProcessors,
     String? pathSeparator,

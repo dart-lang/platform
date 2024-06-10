@@ -1,6 +1,6 @@
-// Copyright (c) 2017, the Dart project authors.  Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
+// Copyright 2013 The Flutter Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
 
 import 'dart:io' as io;
 
@@ -30,7 +30,7 @@ void main() {
 
     setUp(() {
       fake = FakePlatform();
-      local = LocalPlatform();
+      local = const LocalPlatform();
     });
 
     group('fromPlatform', () {
@@ -43,7 +43,7 @@ void main() {
       });
 
       test('convertsPropertiesToMutable', () {
-        String key = fake.environment.keys.first;
+        final key = fake.environment.keys.first;
 
         expect(fake.environment[key], local.environment[key]);
         fake.environment[key] = 'FAKE';
@@ -62,7 +62,7 @@ void main() {
       });
 
       test('overrides a value, but leaves others intact', () {
-        FakePlatform copy = fake.copyWith(
+        final copy = fake.copyWith(
           numberOfProcessors: -1,
         );
         expect(copy.numberOfProcessors, equals(-1));
@@ -96,7 +96,7 @@ void main() {
           stdoutSupportsAnsi: true,
           localeName: 'local',
         );
-        FakePlatform copy = fake.copyWith(
+        final copy = fake.copyWith(
           numberOfProcessors: local.numberOfProcessors,
           pathSeparator: local.pathSeparator,
           operatingSystem: local.operatingSystem,
@@ -119,7 +119,7 @@ void main() {
 
     group('json', () {
       test('fromJson', () {
-        String json = io.File('test/platform.json').readAsStringSync();
+        final json = io.File('test/platform.json').readAsStringSync();
         fake = FakePlatform.fromJson(json);
         expect(fake.numberOfProcessors, 8);
         expect(fake.pathSeparator, '/');
@@ -147,7 +147,7 @@ void main() {
   });
 
   test('Throws when unset non-null values are read', () {
-    final FakePlatform platform = FakePlatform();
+    final platform = FakePlatform();
 
     expect(() => platform.numberOfProcessors, throwsA(isStateError));
     expect(() => platform.pathSeparator, throwsA(isStateError));
