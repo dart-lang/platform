@@ -4,6 +4,7 @@
 .dart_tool/
 .pub/
 build/
+doc/
 packages
 .packages
 
@@ -15,3 +16,6 @@ pubspec.lock
 .settings
 .idea
 .c9
+
+# Used internally for test files.
+tmp/
