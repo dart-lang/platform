@@ -12,8 +12,7 @@ from earlier Dart platform APIs located in:
 The `dart:io` core library is only available on Dart native platforms 
 (and, for example, not available on Dart web platforms). 
 We recommend migration to `package:platform` version 3.2, as the APIs in
-`package:platform/platform.dart` are available on all current platforms. For the
-additional native-only APIs, those available in `package:platform/native.dart`.
+`package:platform/platform.dart` are available on all current platforms.
 
 _Note: This migration can be performed automatically by running `dart fix`._
 
@@ -23,8 +22,8 @@ The `dart:io` library exposes host platform information as static members of the
 `Platform` class. This API has historically been made available on some
 platforms that don't otherwise support `dart:io`.
 
-To migrate uses of that API to `package:platform` v4.x, use the similarly-named
-members on the `HostPlatform.current` object.
+To migrate uses of that API to `package:platform` version 3.2, use the
+similarly-named members on the `Platform.current` object.
 
 Migrate from:
 ```dart
