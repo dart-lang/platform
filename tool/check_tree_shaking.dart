@@ -241,7 +241,8 @@ bool _checkCompiled(File source, File output, int verbose) {
 }
 
 List<String> defaultExampleFiles(String packageRoot) {
-  var exampleDir = Directory(path.join(packageRoot, 'example'));
+  var exampleDir =
+      Directory(path.join(packageRoot, 'tool', 'src', 'tree_shake'));
   return [
     for (var example in exampleDir.listSync())
       if (path.filename(example.path) case var filename
