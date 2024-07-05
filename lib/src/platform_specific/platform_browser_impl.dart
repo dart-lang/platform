@@ -113,15 +113,29 @@ final class BrowserPlatform {
   /// Same as [Platform.current.browserPlatform].
   static BrowserPlatform? get current => Platform.current.browserPlatform;
 
-  /// The browser's version, as reported by `Navigator.appVersion`.
+  /// The browser's version, as reported by `Navigator.appVersion` by default.
+  ///
+  /// If a particular browser provides a more specific version string,
+  /// it may be used instead of the default.
+  ///
+  /// No guarantees are made about the format of the string, it may differ
+  /// between different browser types, and between different browser versions
+  /// or versions of this package.
+  ///
+  /// If no `Navigator` object is a available,
+  /// the string content is unspecified.
   String get version =>
       window.navigator?.appVersion ?? 'No navigator.appVersion';
 
   /// The browser's user-agent string, as reported by `Navigator.userAgent`.
+  ///
+  /// If no `Navigator` object is a available, the value will be
+  /// the string `"unknown"`.
   String get userAgent =>
       window.navigator?.userAgent ?? 'No navigator.userAgent';
 
-  /// A JSON representation of the state of this platform object.
+
+  /// A JSON representation of the state of this browser platform object.
   String toJson() => const JsonEncoder.withIndent('  ').convert({
         json_key.userAgent: userAgent,
         json_key.version: version,

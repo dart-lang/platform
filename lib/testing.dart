@@ -19,10 +19,13 @@
 /// These fake classes should *only* be used for testing.
 /// Even including them in a production program may cause more code to
 /// be retained than necessary.
+///
+/// @docImport 'src/platforms.dart';
+/// @docImport 'src/testing/fake_platforms.dart';
+@visibleForTesting
 library;
 
-import 'src/platforms.dart'; // For DartDoc.
-import 'src/testing/fake_platforms.dart'; // For DartDoc.
+import 'package:meta/meta.dart' show visibleForTesting;
 
 export 'src/platforms.dart'
     show BrowserPlatform, NativePlatform, Platform, PlatformIsOS;

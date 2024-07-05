@@ -11,11 +11,11 @@
 /// being non-`null`, depending on the runtime system the current program is
 /// running on.
 ///
-/// That value can the provide more information about the current native,
-/// or browser platform.
+/// That value can provide more information about the current native
+/// or browser platform, respectively.
 ///
 /// [!NOTE]
-/// This library currently provides a deprecated legacy [LocalPlatform]
+/// This library currently provides deprecated legacy [LocalPlatform]
 /// and [FakePlatform] classes, and exposes deprecated members on the
 /// [Platform] interface.
 /// Code using those deprecated members or the class [LocalPlatform] should use
@@ -27,10 +27,11 @@
 /// together requires hiding `FakePlatform` from `testing.dart`
 /// until all legacy [FakePlatform] uses have been removed.
 /// The legacy [FakePlatform] is also available as [LegacyFakePlatform].
+///
+/// @docImport 'src/legacy_implementation/legacy_classes.dart';
+/// @docImport 'src/platforms.dart';
 library;
 
-import 'src/legacy_implementation/legacy_classes.dart'; // For DartDoc.
-import 'src/platforms.dart'; // For DartDoc.
 
 // Legacy classes, `LocalPlatform` and `FakePlatform`
 // (not the same as `FakePlatform` from `testing.dart`).
