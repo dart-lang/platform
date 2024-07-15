@@ -17,7 +17,7 @@ import '../platforms_impl.dart' show Platform;
 abstract final class NativePlatform {
   /// The current native platform, if any.
   ///
-  /// Same as [Platform.current.nativePlatform].
+  /// Same as [Platform.current.nativePlatform][Platform.nativePlatform].
   static NativePlatform? get current => Platform.current.nativePlatform;
 
   /// The value of [operatingSystem] on Linux.

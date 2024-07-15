@@ -19,7 +19,7 @@
 /// and [FakePlatform] classes, and exposes deprecated members on the
 /// [Platform] interface.
 /// Code using those deprecated members or the class [LocalPlatform] should use
-/// [Platform.current.nativePlatform] instead.
+/// [Platform.current.nativePlatform][Platform.nativePlatform] instead.
 /// Code using [FakePlatform] should import `package:platform/testing.dart`
 /// and use `FakeNativePlatform` instead.
 /// Be aware that `package:platform/testing.dart` exposes a

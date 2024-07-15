@@ -15,7 +15,7 @@ abstract final class BrowserPlatform {
 
   /// The current Browser platform, if any.
   ///
-  /// Same as [Platform.current.browserPlatform].
+  /// Same as [Platform.current.browserPlatform][Platform.browserPlatform].
   static BrowserPlatform? get current => Platform.current.browserPlatform;
 
   /// The browser's version, as reported by `Navigator.appVersion` by default.
