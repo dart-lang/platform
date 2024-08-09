@@ -118,7 +118,7 @@ final class NativePlatform {
 
   /// The current native platform, if any.
   ///
-  /// Same as [Platform.current.nativePlatform].
+  /// Same as [Platform.current.nativePlatform](Platform.nativePlatform).
   @pragma('vm:prefer-inline')
   static NativePlatform? get current => Platform.current.nativePlatform;
 

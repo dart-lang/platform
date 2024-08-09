@@ -110,7 +110,7 @@ final class BrowserPlatform {
 
   /// The current Browser platform, if any.
   ///
-  /// Same as [Platform.current.browserPlatform].
+  /// Same as [Platform.current.browserPlatform](Platform.browserPlatform).
   static BrowserPlatform? get current => Platform.current.browserPlatform;
 
   /// The browser's version, as reported by `Navigator.appVersion` by default.
@@ -133,7 +133,6 @@ final class BrowserPlatform {
   /// the string `"unknown"`.
   String get userAgent =>
       window.navigator?.userAgent ?? 'No navigator.userAgent';
-
 
   /// A JSON representation of the state of this browser platform object.
   String toJson() => const JsonEncoder.withIndent('  ').convert({
