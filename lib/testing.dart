@@ -31,4 +31,8 @@ export 'src/platforms.dart'
     show BrowserPlatform, NativePlatform, Platform, PlatformIsOS;
 
 export 'src/testing/fake_platforms.dart'
-    show FakeBrowserPlatform, FakeNativePlatform, FakePlatform;
+    show
+        FakeBrowserPlatform,
+        FakeNativePlatform,
+        FakePlatform,
+        FakePlatformMigrationHelper;

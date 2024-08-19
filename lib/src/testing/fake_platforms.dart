@@ -57,20 +57,63 @@ final class FakePlatform extends PlatformTestBase {
     // There is currently no way to have a platform with both
     // a browser platform and a native platform.
     var native = platform.nativePlatform;
-    if (native != null) return FakePlatform.native(native);
+    if (native != null) return FakePlatform.fromNative(native);
     var browser = platform.browserPlatform;
-    if (browser != null) return FakePlatform.browser(browser);
+    if (browser != null) return FakePlatform.fromBrowser(browser);
     return const FakePlatform.unknown();
   }
 
   /// Creates a [FakePlatform] with a [NativePlatform].
   ///
+  /// Creates a [FakeNativePlatform.new] with the same arguments,
+  /// and a [FakePlatform] with that as [nativePlatform].
+  ///
+  /// It's recommended to use
+  /// ```dart
+  /// FakePlatform.fromNative(FakeNativePlatform(...))
+  /// ```
+  FakePlatform.native({
+    Map<String, String>? environment,
+    String? executable,
+    List<String>? executableArguments,
+    String? lineTerminator,
+    String? localeName,
+    String? localHostname,
+    int? numberOfProcessors,
+    String? operatingSystem,
+    String? operatingSystemVersion,
+    String? packageConfig,
+    String? pathSeparator,
+    String? resolvedExecutable,
+    Uri? script,
+    bool? stdinSupportsAnsi,
+    bool? stdoutSupportsAnsi,
+    String? version,
+  }) : this._native(FakeNativePlatform(
+          environment: environment,
+          executable: executable,
+          executableArguments: executableArguments,
+          lineTerminator: lineTerminator,
+          localeName: localeName,
+          localHostname: localHostname,
+          numberOfProcessors: numberOfProcessors,
+          operatingSystem: operatingSystem,
+          operatingSystemVersion: operatingSystemVersion,
+          packageConfig: packageConfig,
+          pathSeparator: pathSeparator,
+          resolvedExecutable: resolvedExecutable,
+          script: script,
+          stdinSupportsAnsi: stdinSupportsAnsi,
+          stdoutSupportsAnsi: stdoutSupportsAnsi,
+          version: version,
+        ));
+
+  /// Creates a [FakePlatform] with a [NativePlatform].
+  ///
   /// If [nativePlatform] is omitted or `null`, the created `FakePlatform]
   /// has a new [FakeNativePlatform] as [Platform.nativePlatform].
-  FakePlatform.native([NativePlatform? nativePlatform])
-      : this._native(nativePlatform = nativePlatform == null
-            ? FakeNativePlatform()
-            : FakeNativePlatform.fromPlatform(nativePlatform));
+  FakePlatform.fromNative(NativePlatform nativePlatform)
+      : this._native(FakeNativePlatform.from(nativePlatform));
 
   /// Creates a [FakePlatform] with a [FakeNativePlatform] created from JSON.
   ///
@@ -84,7 +127,7 @@ final class FakePlatform extends PlatformTestBase {
   ///
   /// If [browserPlatform] is omitted or `null`, the created `FakePlatform]
   /// has a new [FakeBrowserPlatform] as [Platform.browserPlatform].
-  FakePlatform.browser([BrowserPlatform? browserPlatform])
+  FakePlatform.fromBrowser([BrowserPlatform? browserPlatform])
       : this._browser(browserPlatform = browserPlatform == null
             ? FakeBrowserPlatform()
             : FakeBrowserPlatform.fromPlatform(browserPlatform));
@@ -368,7 +411,7 @@ final class FakeNativePlatform extends NativePlatformTestBase {
   }
 
   /// Creates a new [FakeNativePlatform] with the properties of [platform].
-  factory FakeNativePlatform.fromPlatform(NativePlatform platform) =>
+  factory FakeNativePlatform.from(NativePlatform platform) =>
       platform is FakeNativePlatform // Values may be unset.
           ? platform.copyWith()
           : FakeNativePlatform(

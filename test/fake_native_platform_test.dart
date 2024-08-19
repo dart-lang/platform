@@ -31,13 +31,13 @@ void main() {
   group('FakeNativePlatform', () {
     group('fromPlatform', () {
       test('copiesAllProperties', () {
-        var fake = FakeNativePlatform.fromPlatform(original);
+        var fake = FakeNativePlatform.from(original);
         testNativeFake(
             fake, jsonDecode(original.toJson()) as Map<String, Object?>);
       });
 
       test('converts properties to mutable', () {
-        var fake = FakeNativePlatform.fromPlatform(original);
+        var fake = FakeNativePlatform.from(original);
         var key = fake.environment.keys.first;
 
         expect(fake.environment[key], original.environment[key]);
@@ -54,7 +54,7 @@ void main() {
     group('copyWith', () {
       test('overrides a value, but leaves others intact', () {
         var expected = jsonDecode(original.toJson()) as Map<String, Object?>;
-        var fake = FakeNativePlatform.fromPlatform(original);
+        var fake = FakeNativePlatform.from(original);
 
         NativePlatform copy = fake.copyWith(
           numberOfProcessors: -1,
@@ -63,7 +63,7 @@ void main() {
         testNativeFake(copy, expected);
       });
       test('can override all values', () {
-        var fake = FakeNativePlatform.fromPlatform(original);
+        var fake = FakeNativePlatform.from(original);
         var expected = <String, Object?>{
           json_key.environment: <String, String>{'PATH': '.'},
           json_key.executable: 'executable',
@@ -259,7 +259,8 @@ void main() {
 
   group('runtime override', () {
     test('sync', () {
-      var fake = FakeNativePlatform.fromPlatform(original)
+      var fake =
+          FakeNativePlatform.from(original)
           .copyWith(operatingSystem: otherOS);
       expect(fake.operatingSystem, otherOS);
       fake.run(() {
@@ -270,7 +271,7 @@ void main() {
     });
     test('async', () async {
       var currentNative = original;
-      var fake = FakeNativePlatform.fromPlatform(currentNative)
+      var fake = FakeNativePlatform.from(currentNative)
           .copyWith(operatingSystem: otherOS);
       var parts = 0;
       var asyncTesting = fake.run(() async {
@@ -295,9 +296,10 @@ void main() {
     });
   });
   group('nested overrides', () {
-    final fakeNative = FakeNativePlatform.fromPlatform(original)
+    final fakeNative =
+        FakeNativePlatform.from(original)
         .copyWith(operatingSystem: otherOS);
-    final fakeNative2 = FakeNativePlatform.fromPlatform(fakeNative)
+    final fakeNative2 = FakeNativePlatform.from(fakeNative)
         .copyWith(operatingSystemVersion: otherVersion);
     test('sync', () {
       fakeNative.run(() {
