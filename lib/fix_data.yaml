@@ -5,10 +5,24 @@ transforms:
     date: 2024-06-14
     element:
       uris: ["platform.dart"]
-      class: FakePlatform
+      inClass: FakePlatform
+      constructor: ''
     changes:
-      - kind: "rename"
-        newName: LegacyFakePlatform
+       - kind: "rename"
+         newName: LegacyFakePlatform
+
+  - title: "Legacy FakePlatform constructor"
+    date: 2024-06-14
+    element:
+      uris: ["platform.dart"]
+      inClass: FakePlatform
+      constructor: ''
+    changes:
+       - kind: "replacedBy"
+         newElement:
+           uris: ["testing.dart"]
+           constructor: 'native'
+           inClass: FakePlatformMigrationHelper
 
   ## Legacy LocalPlatform class -> new NativePlatform class
   ##

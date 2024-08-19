@@ -8,8 +8,9 @@
 // To test migration of this file, run `dart tool/check_migration.dart` from
 // the project root.
 
-// REMOVE NEXT LINE BEFORE TESTING MIGRATION:
+// REMOVE NEXT LINE BEFORE TESTING MIGRATION DIRECTLY:
 // ignore_for_file: deprecated_member_use_from_same_package
+// (The `tools/test_migration.dart` script removes the line.)
 
 import 'package:platform/platform.dart';
 

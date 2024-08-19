@@ -62,43 +62,49 @@ void main(List<String> args) {
 
   var migrationTestDir = createTmpDir('migration_test', verbose: verbose);
 
-  // Copy original file, remove `ignore_for_file:...`
-  var sourceFilePath = path.join(
-      path.directory(selfPath), 'src', 'sample', 'legacy_example_code.dart');
-  var sourceFile = File(sourceFilePath);
-  var content = sourceFile.readAsStringSync();
-  content = content.replaceFirst(
-      ' ignore_for_file: deprecated_member_use_from_same_package', '');
-  var testFile = File(path.join(migrationTestDir.path, 'migration_test.dart'));
-  testFile.writeAsStringSync(content);
-  // Run `dart fix` on file.
-  if (verbose > 0) {
-    stdout.writeln("Running: dart fix --apply ${testFile.path}");
-  }
-  var dartFixResult = run(dartExe, [
-    'fix',
-    '--apply',
-    testFile.path,
-  ]);
-  if (dartFixResult.exitCode != 0) {
-    stderr.writeln('FAILED($dartFixResult.exitCode):'
-        'dart fix --apply ${testFile.path}');
-    printProcessOutput(dartFixResult);
-    if (!retainOnError) {
-      migrationTestDir.deleteSync(recursive: true);
+  var sourceFileDir = path.join(path.directory(selfPath), 'src', 'sample');
+  for (var sourceFile in Directory(sourceFileDir).listSync()) {
+    var sourceFilePath = sourceFile.path;
+    if (sourceFile is! File ||
+        !sourceFilePath.endsWith('dart') ||
+        !sourceFilePath.contains('example_code')) {
+      continue;
     }
-    exit(1);
-  }
-  stderr.writeln(dartFixResult.stdout);
+    var fileName = sourceFilePath.substring(sourceFileDir.length + 1);
+    var content = sourceFile.readAsStringSync();
+    content = content.replaceFirst(
+        ' ignore_for_file: deprecated_member_use_from_same_package', '');
+    var testFile = File(path.join(migrationTestDir.path, fileName));
+    testFile.writeAsStringSync(content);
+    // Run `dart fix` on file.
+    if (verbose > 0) {
+      stdout.writeln("Running: dart fix --apply ${testFile.path}");
+    }
+    var dartFixResult = run(dartExe, [
+      'fix',
+      '--apply',
+      testFile.path,
+    ]);
+    if (dartFixResult.exitCode != 0) {
+      stderr.writeln('FAILED($dartFixResult.exitCode):'
+          'dart fix --apply ${testFile.path}');
+      printProcessOutput(dartFixResult);
+      if (!retainOnError) {
+        migrationTestDir.deleteSync(recursive: true);
+      }
+      exit(1);
+    }
+    stderr.writeln(dartFixResult.stdout);
 
-  if (verbose > 0) {
-    stdout.writeln('Running: dart analyze ${testFile.path}');
+    if (verbose > 0) {
+      stdout.writeln('Running: dart analyze ${testFile.path}');
+    }
+    var dartAnalyzeResult = run(dartExe, [
+      'analyze',
+      testFile.path,
+    ]);
+    stdout.writeln(dartAnalyzeResult.stdout);
   }
-  var dartAnalyzeResult = run(dartExe, [
-    'analyze',
-    testFile.path,
-  ]);
-  stdout.writeln(dartAnalyzeResult.stdout);
 
   if (!retain) {
     if (verbose > 1) {

@@ -32,9 +32,9 @@
 /// @docImport 'src/platforms.dart';
 library;
 
-
 // Legacy classes, `LocalPlatform` and `FakePlatform`
 // (not the same as `FakePlatform` from `testing.dart`).
+// The `FakePlatform` from here is an alias for `LegacyFakePlatform`.
 export 'src/legacy_implementation/legacy_classes.dart'
     show FakePlatform, LegacyFakePlatform, LocalPlatform;
 
