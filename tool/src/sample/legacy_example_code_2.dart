@@ -15,6 +15,10 @@
 import 'package:platform/platform.dart';
 
 void main() {
-  var fakePlatform = FakePlatform(executable: 'pineapple');
+  LocalPlatform local = LocalPlatform();
+  FakePlatform fakePlatform =
+      FakePlatform.fromJson(local.toJson()).copyWith(executable: 'pineapple');
+  Platform platform = fakePlatform;
   if (fakePlatform.executable == 'apricot') throw AssertionError('Not it');
+  if (platform.executable == 'apricot') throw AssertionError('Not it');
 }

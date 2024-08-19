@@ -104,9 +104,9 @@ void main(List<String> args) {
       testFile.path,
     ]);
     stdout.writeln(dartAnalyzeResult.stdout);
-    var diffres = Process.runSync("/bin/diff", [sourceFilePath, testFile.path],
-        runInShell: true);
-    print(diffres.stdout);
+    // var diffres = Process.runSync("/bin/diff", [sourceFilePath, testFile.path],
+    //     runInShell: true);
+    // print(diffres.stdout);
   }
 
   if (!retain) {
