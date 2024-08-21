@@ -245,6 +245,7 @@ mixin LegacyPlatformMembers {
   ///
   /// Can be emitted for debugging, or be used as input to a fake environment
   /// used for debugging.
+  @Deprecated('Use Platform.current.nativePlatform!.toJson instead')
   String toJson() => throw UnimplementedError(
       'Use Platform.current.nativePlatform!.toJson instead');
 }
