@@ -98,7 +98,8 @@ mixin LegacyPlatformMembers {
   /// Use `NativePlatform` to access these properties instead, accessed as
   /// `Platform.current.nativePlatform`.
   @Deprecated('Use Platform.current.nativePlatform!.localeName instead')
-  String get localeName => p.Platform.current.nativePlatform!.localeName;
+  String get localeName => throw UnimplementedError(
+      'Use Platform.current.nativePlatform!.localeName instead');
 
   /// Get the local hostname for the system.
   ///
@@ -109,7 +110,8 @@ mixin LegacyPlatformMembers {
   /// Use `NativePlatform` to access these properties instead, accessed as
   /// `Platform.current.nativePlatform`.
   @Deprecated('Use Platform.current.nativePlatform!.localHostname instead')
-  String get localHostname => p.Platform.current.nativePlatform!.localHostname;
+  String get localHostname => throw UnimplementedError(
+      'Use Platform.current.nativePlatform!.localHostname instead');
 
   /// The number of processors of the machine.
   ///
@@ -136,7 +138,8 @@ mixin LegacyPlatformMembers {
   ///
   /// If there is no `--packages` flag, `null` is returned.
   @Deprecated('Use Platform.current.nativePlatform!.packageConfig instead')
-  String? get packageConfig => p.Platform.current.nativePlatform!.packageConfig;
+  String? get packageConfig => throw UnimplementedError(
+      'Use Platform.current.nativePlatform!.packageConfig instead');
 
   /// The path separator used by the operating system to separate
   /// components in file paths.
@@ -148,7 +151,8 @@ mixin LegacyPlatformMembers {
   /// Use `NativePlatform` to access these properties instead, accessed as
   /// `Platform.current.nativePlatform`.
   @Deprecated('Use Platform.current.nativePlatform!.pathSeparator instead')
-  String get pathSeparator => p.Platform.current.nativePlatform!.pathSeparator;
+  String get pathSeparator => throw UnimplementedError(
+      'Use Platform.current.nativePlatform!.pathSeparator instead');
 
   /// The path of the executable used to run the script in this
   /// isolate after it has been resolved by the OS.

@@ -151,6 +151,51 @@ final class FakePlatform extends PlatformTestBase {
   /// when it's needed, and avoid any caching.
   R run<R>(R Function() fakePlatformCode) =>
       overrides.runWith(fakePlatformCode, this, _OverrideMarker.marker);
+
+  /// Migration helper for legacy `FakePlatform.copyWith`.
+  ///
+  /// Use [FakeNativePlatform.copyWith] instead.
+  /// Work directly with [FakeNativePlatform], rather than creating a
+  /// `FakePlatform` from it.
+  ///
+  /// Only works if there is a current [nativePlatform].
+  ///
+  /// Will be deprecated and removed when legacy classes are removed.
+  FakePlatform copyWithNativeMigrationHelper({
+    int? numberOfProcessors,
+    String? pathSeparator,
+    String? operatingSystem,
+    String? operatingSystemVersion,
+    String? localHostname,
+    Map<String, String>? environment,
+    String? executable,
+    String? resolvedExecutable,
+    Uri? script,
+    List<String>? executableArguments,
+    String? packageConfig,
+    String? version,
+    bool? stdinSupportsAnsi,
+    bool? stdoutSupportsAnsi,
+    String? localeName,
+  }) {
+    return FakePlatform._native(nativePlatform!.copyWith(
+      numberOfProcessors: numberOfProcessors,
+      pathSeparator: pathSeparator,
+      operatingSystem: operatingSystem,
+      operatingSystemVersion: operatingSystemVersion,
+      localHostname: localHostname,
+      environment: environment,
+      executable: executable,
+      resolvedExecutable: resolvedExecutable,
+      script: script,
+      executableArguments: executableArguments,
+      packageConfig: packageConfig,
+      version: version,
+      stdinSupportsAnsi: stdinSupportsAnsi,
+      stdoutSupportsAnsi: stdoutSupportsAnsi,
+      localeName: localeName,
+    ));
+  }
 }
 
 /// Instance used to mark overrides as used.

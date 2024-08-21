@@ -192,6 +192,7 @@ final class LegacyFakePlatform extends PlatformTestBase {
 
   /// Creates a new [FakePlatform] from this one,
   /// with some properties replaced by the given properties.
+  @Deprecated('Use NativePlatform.copyWith instead')
   FakePlatform copyWith({
     int? numberOfProcessors,
     String? pathSeparator,

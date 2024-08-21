@@ -13,5 +13,7 @@ void main() {
         when platform.isLinux | platform.isMacOS | platform.isWindows:
       print('Running on ${platform.operatingSystem}');
       print('Hostname: ${platform.localHostname}');
+    default:
+      print('Not running on supported platform');
   }
 }

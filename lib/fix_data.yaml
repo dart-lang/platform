@@ -1,15 +1,17 @@
 version: 1
 transforms:
-  # ## Start by renaming original `FakePlatform` to `LegacyFakePlatform`.
-  # - title: "Legacy FakePlatform"
-  #   date: 2024-06-14
-  #   element:
-  #     uris: ["package:platform/platform.dart"]
-  #     inClass: FakePlatform
-  #     constructor: ''
-  #   changes:
-  #      - kind: "rename"
-  #        newName: LegacyFakePlatform
+  ## First rename the legacy `FakePlatform` to `LegacyFakePlatform`
+  ## (Which `FakePlatform` is a type alias for.)
+  ## There should be no references left to `LegacyFakePlatform`
+  ## when the remaining fixes have run.
+  - title: "LegacyFakePlatform"
+    date: 2024-06-14
+    element:
+      uris: ["package:platform/platform.dart"]
+      class: "FakePlatform"
+    changes:
+      - kind: "rename"
+        newName: "LegacyFakePlatform"
 
   ## Platform static members -> NativePlatform static members
   - title: "Platform.android"
@@ -124,7 +126,7 @@ transforms:
           inClass: "NativePlatform"
           static: true
 
-  ## Members on Platform -> members on Platform.nativePlatform!
+  ## Instance members on `Platform` -> members on `Platform.nativePlatform!`
   - title: "Platform.environment"
     date: 2024-06-14
     element:
@@ -301,8 +303,9 @@ transforms:
       - kind: "rename"
         newName: "nativePlatform!.version"
 
-  ## Members on Platform from testing.dart
-  ## -> members on Platform.nativePlatform!
+  ## Instance members on `FakePlatform` from testing.dart
+  ## -> members on `FakePlatform.nativePlatform!`
+  ## (which implements `Platform`, but isn't handled by fixes above).
   - title: "FakePlatformMigrationHelperPlatform.environment"
     date: 2024-06-14
     element:
@@ -479,16 +482,47 @@ transforms:
       - kind: "rename"
         newName: "nativePlatform!.version"
 
-  - title: "LegacyFakePlatform"
-    date: 2024-08-20
+  ## `LegacyFakePlatform.copyWith` ->
+  ## `FakePlatform.copyWithNativeMigrationHelper`.
+  ## (Uses rename, can't replace with a method that isn't in the source type?)
+
+  - title: "LegacyFakePlatform.copyWith"
+    date: 2024-06-14
     element:
       uris: ["package:platform/platform.dart"]
-      class: "FakePlatform"
+      method: "copyWith"
+      inClass: "FakePlatform"
+      static: false
     changes:
       - kind: "rename"
-        newName: "LegacyFakePlatform"
+        newName: "copyWithNativeMigrationHelper"
 
-  ## Legacy LocalPlatform class -> new NativePlatform class
+  # - title: "FakePlatform.copyWith"
+  #   date: 2024-06-14
+  #   element:
+  #     uris: ["package:platform/testing.dart"]
+  #     method: "copyWith"
+  #     inClass: "FakePlatform"
+  #     static: false
+  #   changes:
+  #     - kind: "rename"
+  #       newName: "copyWithNativeMigrationHelper"
+
+  - title: "LegacyFakePlatform.copyWith"
+    date: 2026-14-20
+    element:
+      uris: ["package:platform/platform.dart"]
+      method: "copyWith"
+      inClass: "FakePlatform"
+      static: false
+    changes:
+      - kind: "replacedBy"
+        uris: ["package:platform/testing.dart"]
+        method: "copyWithNativeMigrationHelper"
+        inClass: "FakePlatformMigrationHelper"
+        static: false
+
+  ## Legacy LocalPlatform class -> new Platform class
   ##
   ## Would prefer to redirect to `NativePlatform` class,
   ## but existing code uses the `Platform` type as supertype,
@@ -505,6 +539,24 @@ transforms:
       - kind: "rename"
         newName: Platform
 
+  - title: "LegacyFakePlatform2Fake"
+    date: 2024-06-14
+    element:
+      uris: ["package:platform/platform.dart"]
+      class: "LegacyFakePlatform"
+    changes:
+      - kind: "rename"
+        newName: "FakePlatformMigrationHelper"
+
+  - title: "LegacyFakePlatform2Fake2"
+    date: 2024-06-14
+    element:
+      uris: ["package:platform/platform.dart"]
+      class: "FakePlatform"
+    changes:
+      - kind: "rename"
+        newName: "FakePlatformMigrationHelper"
+
   ## Legacy FakePlatform class -> new FakePlatform class.
   ##
   ## The new FakePlatform is from `package:platform/testing.dart`.
@@ -513,6 +565,9 @@ transforms:
   ##
   ## TODO: Cannot replace a class reference, can only rename it.
   ##       Cannot provide URI of target when renaming.
+  ##       Current solution: "replace" constructors, adding an import.
+  ##                         "rename" type itself, which only works if there
+  ##                         is a constructor call in the same file.
   - title: "LegacyFakePlatform.new"
     date: 2024-06-14
     element:
@@ -521,7 +576,6 @@ transforms:
       inClass: "LegacyFakePlatform"
     changes:
       - kind: "replacedBy"
-        # replaceTarget: true
         newElement:
           uris: ["package:platform/testing.dart"]
           constructor: 'native'
@@ -535,7 +589,6 @@ transforms:
       inClass: "LegacyFakePlatform"
     changes:
       - kind: "replacedBy"
-        # replaceTarget: true
         newElement:
           uris: ["package:platform/testing.dart"]
           constructor: 'nativeFromJson'
@@ -549,59 +602,17 @@ transforms:
       inClass: "LegacyFakePlatform"
     changes:
       - kind: "replacedBy"
-        # replaceTarget: true
         newElement:
           uris: ["package:platform/testing.dart"]
           constructor: 'fromPlatform'
           inClass: "FakePlatformMigrationHelper"
 
-  # ## Legacy FakePlatform class -> new FakePlatform class.
-  # ##
-  # ## The new FakePlatform is from `package:platform/testing.dart`.
-  # ## Migrate constructors to constructors creating a `FakeNativePlatform`
-  # ## backed `FakePlatform`.
-  # ##
-  # ## TODO: Cannot replace a class reference, can only rename it.
-  # ##       Cannot provide URI of target when renaming.
-  # - title: "FakePlatform"
-  #   date: 2024-06-14
-  #   element:
-  #     uris: ["package:platform/platform.dart"]
-  #     constructor: ''
-  #     inClass: "FakePlatform"
-  #   changes:
-  #     - kind: "replacedBy"
-  #       # replaceTarget: true
-  #       newElement:
-  #         uris: ["package:platform/testing.dart"]
-  #         constructor: 'native'
-  #         inClass: "FakePlatformMigrationHelper"
-
-  # - title: "FakePlatform.fromJson"
-  #   date: 2024-06-14
-  #   element:
-  #     uris: ["package:platform/platform.dart"]
-  #     constructor: 'fromJson'
-  #     inClass: "FakePlatform"
-  #   changes:
-  #     - kind: "replacedBy"
-  #       # replaceTarget: true
-  #       newElement:
-  #         uris: ["package:platform/testing.dart"]
-  #         constructor: 'nativeFromJson'
-  #         inClass: "FakePlatformMigrationHelper"
-
-  # - title: "LegacyFakePlatform.fromPlatform"
-  #   date: 2024-06-14
-  #   element:
-  #     uris: ["package:platform/platform.dart"]
-  #     constructor: 'fromPlatform'
-  #     inClass: "LegacyFakePlatform"
-  #   changes:
-  #     - kind: "replacedBy"
-  #       # replaceTarget: true
-  #       newElement:
-  #         uris: ["package:platform/testing.dart"]
-  #         constructor: 'fromPlatform'
-  #         inClass: "FakePlatformMigrationHelper"
+  - title: "LegacyFakePlatform-toFake"
+    date: 2024-06-14
+    element:
+      uris: ["package:platform/platform.dart"]
+      class: "LegacyFakePlatform"
+    changes:
+      - kind: "rename"
+        newName: "FakePlatformMigrationHelper"
 
