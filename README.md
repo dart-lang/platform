@@ -1,3 +1,6 @@
+> [!IMPORTANT]  
+> This repo has moved to https://github.com/dart-lang/core/tree/main/pkgs/platform
+
 [![Pub](https://img.shields.io/pub/v/platform.svg)](https://pub.dartlang.org/packages/platform)
 
 A generic platform abstraction for Dart.
